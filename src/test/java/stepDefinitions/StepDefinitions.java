@@ -37,6 +37,9 @@ public class StepDefinitions {
         WebElement searchBox = driver.findElement(By.name("n01")); // Hitta sökfältet "q"
         searchBox.sendKeys(Integer.toString(firstNumber)); // Skriver in chromedriver i sökfältet
 
+        // Just a comment to change it.
+
+
         //   searchBox.sendKeys(Keys.ENTER);
         //searchBox.submit(); // Skickar data som finns i sökfältet
 
