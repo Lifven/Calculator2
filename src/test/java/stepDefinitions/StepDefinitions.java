@@ -1,20 +1,15 @@
 package stepDefinitions;
 
-//import io.cucumber.java.After;
-
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
-
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+//import io.cucumber.java.After;
 
 public class StepDefinitions {
 
@@ -22,27 +17,26 @@ public class StepDefinitions {
 
     @Before
     public void init() {
-
     }
 
-    @Given("I have entered {int} into the calculator")
-    public void i_have_entered_into_the_calculator(int firstNumber) throws InterruptedException {
-
+    @Given("I have navigated to the calculator")
+    public void iHaveNavigatedToTheCalculator() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\chromedriver.exe");
         driver = new ChromeDriver(); // Starta chrome
 
         driver.get("https://www.marshu.com/articles/calculate-addition-calculator-add-two-numbers.php"); // Navigera till google.com
         driver.manage().window().maximize(); // Gör fönstret stort
         Thread.sleep(1000);  // Let the user actually see something! Väntar 5 sek.
+    }
+
+    @Given("I have entered {int} into the calculator")
+    public void i_have_entered_into_the_calculator(int firstNumber) throws InterruptedException {
+
         WebElement searchBox = driver.findElement(By.name("n01")); // Hitta sökfältet "q"
         searchBox.sendKeys(Integer.toString(firstNumber)); // Skriver in chromedriver i sökfältet
 
-        // Just a comment to change it.
-
-
         //   searchBox.sendKeys(Keys.ENTER);
         //searchBox.submit(); // Skickar data som finns i sökfältet
-
     }
 
     @Given("I have also entered {int} into the calculator")
@@ -52,7 +46,6 @@ public class StepDefinitions {
         searchBox.sendKeys(Integer.toString(secondNumber)); // Skriver in chromedriver i sökfältet
         Thread.sleep(1000);
         //   searchBox.sendKeys(Keys.ENTER);
-
     }
 
     @When("I press add")
@@ -62,7 +55,6 @@ public class StepDefinitions {
         //  enterBox.submit();
         enterBox.sendKeys(Keys.ENTER);
         Thread.sleep(1000);
-
     }
 
     @Then("the result should be {int} on the screen")
@@ -73,6 +65,5 @@ public class StepDefinitions {
        // Thread.sleep(1000);  // Let the user actually see something!
         driver.quit();
     }
-
 
 }
